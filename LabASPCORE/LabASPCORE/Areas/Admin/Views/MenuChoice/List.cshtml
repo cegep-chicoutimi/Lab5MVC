@@ -1,0 +1,41 @@
+﻿@model List<MenuChoix>
+@{
+    ViewData["Title"] = "Liste des choix de menu";
+}
+@*https://localhost:7181/admin/MenuChoice/List*@
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center"><i class="fa-solid fa-list-ul"></i>Liste des choix de menu</h2>
+            </div>
+
+            <table class="table table-sm table-bordered table-striped table-hover">
+                <tr>
+                    <th>descriptions</th>
+                    <th>Actions</th>
+                </tr>
+                @if (Model.Count > 0)
+                {
+                    @foreach (MenuChoix menuChoix in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => menuChoix.Description)</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@menuChoix.Id"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a asp-action="Delete" asp-route-id="@menuChoix.Id"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">Aucun produit trouvé.</td>
+                    </tr>
+                }
+            </table>
+            <button><a asp-action="Create">Ajouter un choix de menu</a></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model MenuChoix
+@{
+    ViewData["Title"] = "Supprimer un choix de menu";
+}
+
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center"><i class="fa-solid fa-list-ul"></i>Supprimer un choix de menu</h2>
+                <br>
+                <br>
+                <p class="text-center">Êtes-vous certain de vouloir supprimer ce menu ?</p>
+            </div>
+            <hr />
+            <div class="form-section">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group row">
+                        <label asp-for="Description" class="col-form-label col-md-6 text-end fw-bold"></label>
+                        <div class="col-md-6 text-start">@Model.Description</div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Supprimer" class="btn btn-danger" />
+                    </div>
+                </form>
+            </div>
+            <hr />
+            <div class="links">
+                <a asp-action="List">Retour à la liste des choix de menu</a>
+            </div>
+        </div>
+    </div>
+</div>

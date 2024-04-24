@@ -1,0 +1,47 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "Liste des réservations";
+}
+@*https://localhost:7181/admin/MenuChoice/List*@
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center"><i class="fa-solid fa-user"></i>Liste des réservations</h2>
+            </div>
+
+            <table class="table table-sm table-bordered table-striped table-hover">
+                <tr>
+                    <th>Date</th>
+                    <th>Nom</th>
+                    <th class="d-sm-none d-xs-none d-md-none d-lg-grid">Courriel</th>
+                    <th>Choix de menu</th>
+                    <th>Nombre</th>
+                    <th class="d-sm-none d-xs-none d-md-grid">Actions</th>
+                </tr>
+                @if (Model.Count > 0)
+                {
+                    @foreach (Reservation reservations in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(model => reservations.DateReservation)</td>
+                            <td>@Html.DisplayFor(model => reservations.Nom)</td>
+                            <td class="d-sm-none d-xs-none d-md-none d-lg-grid">@Html.DisplayFor(model => reservations.Courriel)</td>
+                            <td>@Html.DisplayFor(model => reservations.IdMenuChoix)</td>
+                            <td>@Html.DisplayFor(model => reservations.NbPersonne)<a asp-action="Delete" asp-route-id="@reservations.Id" class="text-end align-self-md-end d-md-none d-lg-none d-xl-none d-xxl-none"><i class="fa-solid fa-trash"></i></a></td>
+                            <td class="d-sm-none d-xs-none d-md-grid">
+                                <a asp-action="Delete" asp-route-id="@reservations.Id"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">Aucun produit trouvé.</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

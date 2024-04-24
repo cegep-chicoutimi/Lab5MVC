@@ -1,0 +1,53 @@
+﻿@model IndexVM
+@{
+    ViewData["Title"] = "Supprimer une réservation";
+}
+
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center">Réservation complétée avec succès</h2>
+            </div>
+            <hr />
+            <div class="form-section">
+                <input type="hidden" asp-for="Reservation.Id" />
+                <div class="form-group row">
+                    <label asp-for="Reservation.DateReservation" class="col-form-label col-md-6 text-end fw-bold">Date de réservation : </label>
+                    <div class="col-md-6 text-start d-flex align-items-center">@Model.Reservation.DateReservation</div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Reservation.Nom" class="col-form-label col-md-6 text-end fw-bold"> Nom : </label>
+                    <div class="col-md-6 text-start d-flex align-items-center">@Model.Reservation.Nom</div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Reservation.Courriel" class="col-form-label col-md-6 text-end fw-bold"> Courriel : </label>
+                    <div class="col-md-6 text-start d-flex align-items-center">@Model.Reservation.Courriel</div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Reservation.NbPersonne" class="col-form-label col-md-6 text-end fw-bold"> Nombre : </label>
+                    <div class="col-md-6 text-start d-flex align-items-center">@Model.Reservation.NbPersonne</div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Reservation.IdMenuChoix" class="col-form-label col-md-6 text-end fw-bold"> Choix de menu : </label>
+                    <div class="col-md-6 text-start d-flex align-items-center">@Model.Choices</div>
+                </div>
+                <br>
+                <br>
+                <p class="text-center">Merci d'avoir utiliser notre module de réservation en ligne</p>
+                <br>
+                <br>
+                <p class="text-center">Au plaisir de vous voir bientôt.</p>
+                <br>
+                <br>
+                <br>
+                <p class="text-center">L'équipe</p>
+                <hr />
+            </div>
+
+            <div class="links">
+                <a asp-action="List">Retour à la liste des choix de menu</a>
+            </div>
+        </div>
+    </div>
+</div>

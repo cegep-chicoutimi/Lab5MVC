@@ -1,0 +1,69 @@
+﻿@model IndexVM
+@{
+    ViewData["Title"] = "Ajouter une réservation";
+}
+
+
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center">Votre réservation</h2>
+            </div>
+            <div class="row">
+                <div class="image-section">
+                    <img src="~/img/ticket_reservation-300x199.gif" class="img-fluid"/>
+                </div>
+                <div class="form-section col-md-6">
+                    <hr />
+                    <form asp-action="Index">
+                        <input type="hidden" asp-for="Reservation.Id" />
+                        <div class="form-group row">
+                            <label asp-for="Reservation.Nom" class="col-form-label col-md-3 fw-bold text-end">Nom</label>
+                            <div class="col-md-6 text-end">
+                                <input asp-for="Reservation.Nom" class="form-control" />
+                                <span asp-validation-for="Reservation.Nom" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Reservation.Courriel" class="col-form-label col-md-3 fw-bold text-end">Courriel</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">@@</span>
+                                    <input asp-for="Reservation.Courriel" class="form-control" />
+                                    <span asp-validation-for="Reservation.Courriel" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Reservation.NbPersonne" class="col-form-label col-md-3 fw-bold text-end">Nombre</label>
+                            <div class="col-md-6">
+                                <input asp-for="Reservation.NbPersonne" class="form-control" />
+                                <span asp-validation-for="Reservation.NbPersonne" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Reservation.DateReservation" class="col-form-label col-md-3 fw-bold text-end">Date</label>
+                            <div class="col-md-6">
+                                <input asp-for="Reservation.DateReservation.Date" class="form-control" id="datePicker" />
+                                <span asp-validation-for="Reservation.DateReservation" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Reservation.IdMenuChoix" class="col-form-label col-md-3 fw-bold text-end">Choix de menu</label>
+                            <div class="col-md-6">
+                                <select asp-for="Reservation.IdMenuChoix" asp-items="@(new SelectList(Model.Choices, "Id", "Description"))" class="form-control">
+                                    <option value="0"></option>
+                                </select>
+                                <span asp-validation-for="Reservation.IdMenuChoix" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="Confirmer la réservation" class="btn btn-primary" asp-route-id="Reservation.Id" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

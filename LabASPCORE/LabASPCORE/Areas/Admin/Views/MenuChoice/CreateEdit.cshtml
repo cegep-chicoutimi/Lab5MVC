@@ -1,0 +1,43 @@
+﻿@model MenuChoix
+@{
+    string textAction = "Ajouter";
+    string formAction = "Create";
+
+    if (Model.Id > 0)
+    {
+        textAction = "Modifier";
+        formAction = "Edit";
+    }
+
+    ViewData["Title"] = textAction + " un produit";
+}
+
+<div>
+    <div>
+        <div>
+            <div>
+                <h2 class="text-center"><i class="fa-solid fa-list-ul"></i>@textAction un choix de menu</h2>
+            </div>
+            <hr />
+            <div class="form-section">
+                <form asp-action="@formAction">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group row">
+                        <label asp-for="Description" class="col-form-label col-md-3 fw-bold"></label>
+                        <div class="col-md-9">
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="@textAction" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+            <hr />
+            <div class="links">
+                <a asp-action="List">Retour à la liste des choix de menu</a>
+            </div>
+        </div>
+    </div>
+</div>
